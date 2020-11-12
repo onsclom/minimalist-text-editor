@@ -1,9 +1,17 @@
 :root {
 	--bg-color: #111;
 	--text-color: #eee;
+	--font-size: 32px;
+	--highlight-color: #ffb7b7;
+	--highlight-color-activated: #acadff;
+	--highlight-cur: #ffb7b7;
+	--font-type: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-
+.light {
+	--bg-color: #eee;
+	--text-color: #111;
+}
 
 html, body {
 	margin: 0;
@@ -11,10 +19,8 @@ html, body {
 	background: var(--bg-color);
 	height: 100%;
 	overflow: hidden;
-}
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+	transition: background .5s;
 }
 
 .editor::-webkit-scrollbar {
@@ -22,19 +28,28 @@ body {
 }
 
 .editor {
+	font-family: var(--font-type);
 	overflow:hidden;
 	color: var(--text-color);
+	font-size: var(--font-size);
 	resize: none;
 	display: block;
 	box-sizing: border-box;
 	padding: 1rem;
 	width: 100%;
-	max-width: 50em;
+	max-width: 100%;
 	height: 100%;
 	margin: auto;
 	overflow: auto;
 
 	background: #0000;
+	border: 4px double var(--text-color);
+	
+	transition: all .2s ease;
+}
+
+.editor::selection {
+	background-color: var(--highlight-cur);
 }
 
 [contenteditable]:focus {
@@ -45,5 +60,4 @@ body {
   content: attr(placeholder);
   position: absolute;
   color: gray;
-  background-color: transparent;
 }
